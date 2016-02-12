@@ -36,18 +36,23 @@ var Feed_Component = React.createClass({displayName: "Feed_Component",
 	},
 
 	render: function(){
+		var timeago = null;
 		return (
 			React.createElement("div", {className: 'feed-items-container'}, 
-				
-					this.state.feed_items.length > 0 ?
-					this.state.feed_items.map(function(val, index, arr){
-						console.log(val);
-						return React.createElement(FeedItem, {title: val.title, 
-										 img: val.mediaGroups[0].contents[0].thumbnails[0].url, 
-										 css: 'feed-item'}) ;
-					}) :
-					React.createElement("div", null, "nothing")
-				
+				React.createElement("ul", null, 
+					
+						this.state.feed_items.length > 0 ?
+						this.state.feed_items.map(function(val, index, arr){
+							console.log(val);
+							timeago = moment(val.publishedDate).fromNow();
+							return React.createElement(FeedItem, {title: val.title, 
+											 img: val.mediaGroups[0].contents[0].thumbnails[0].url, 
+											 published: timeago, 
+											 css: 'feed-item clearfix'}) ;
+						}) :
+						React.createElement("li", null, "nothing")
+					
+				)
 			)
 		);
 	}
@@ -56,9 +61,12 @@ var Feed_Component = React.createClass({displayName: "Feed_Component",
 var FeedItem = React.createClass({displayName: "FeedItem",
 	render: function(){
 		return(
-			React.createElement("div", {className: this.props.css}, 
-				React.createElement("img", {src: this.props.img}), 
-				this.props.title
+			React.createElement("li", {className: this.props.css}, 
+				React.createElement("img", {className: "thumb", src: this.props.img}), 
+				React.createElement("div", {className: "content"}, 
+					React.createElement("div", {className: "title"}, this.props.title), 
+					React.createElement("div", {className: "timeago"}, React.createElement("small", null, "Posted: ", this.props.published))
+				)
 			)
 		);
 	}

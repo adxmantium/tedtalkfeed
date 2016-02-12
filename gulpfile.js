@@ -15,10 +15,11 @@ var gulp = require('gulp'),
 
 gulp.task('copy', function(){
 	gulp.src([
-	    'node_modules/react/dist/react-with-addons.min.js',
-	    'node_modules/react-dom/dist/react-dom.min.js',
-	    'node_modules/underscore/underscore-min.js',
-	    'node_modules/jquery/dist/jquery.min.js'
+	    // 'node_modules/react/dist/react-with-addons.min.js',
+	    // 'node_modules/react-dom/dist/react-dom.min.js',
+	    // 'node_modules/underscore/underscore-min.js',
+	    // 'node_modules/jquery/dist/jquery.min.js',
+	    'node_modules/moment/min/moment.min.js'
 	]).pipe(gulp.dest('assets/js'));
 });
 
@@ -29,6 +30,7 @@ gulp.task('concat-js', function(){
 			'assets/js/underscore-min.js',
 			'assets/js/react-with-addons.min.js', 
 			'assets/js/react-dom.min.js',
+			'assets/js/moment.min.js'
 			])
 		.pipe(concat('libraries.min.js'))
 		.pipe(gulp.dest('public/js'));

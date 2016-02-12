@@ -36,18 +36,23 @@ var Feed_Component = React.createClass({
 	},
 
 	render: function(){
+		var timeago = null;
 		return (
 			<div className={'feed-items-container'}>
-				{
-					this.state.feed_items.length > 0 ?
-					this.state.feed_items.map(function(val, index, arr){
-						console.log(val);
-						return <FeedItem title={val.title}
-										 img={val.mediaGroups[0].contents[0].thumbnails[0].url}
-										 css={'feed-item'} /> ;
-					}) :
-					<div>nothing</div>
-				}
+				<ul>
+					{
+						this.state.feed_items.length > 0 ?
+						this.state.feed_items.map(function(val, index, arr){
+							console.log(val);
+							timeago = moment(val.publishedDate).fromNow();
+							return <FeedItem title={val.title}
+											 img={val.mediaGroups[0].contents[0].thumbnails[0].url}
+											 published={timeago}
+											 css={'feed-item clearfix'} /> ;
+						}) :
+						<li>nothing</li>
+					}
+				</ul>
 			</div>
 		);
 	}
@@ -56,10 +61,13 @@ var Feed_Component = React.createClass({
 var FeedItem = React.createClass({
 	render: function(){
 		return(
-			<div className={this.props.css}>
-				<img src={this.props.img} />
-				{this.props.title}
-			</div>
+			<li className={this.props.css}>
+				<img className="thumb" src={this.props.img} />
+				<div className="content">
+					<div className="title">{this.props.title}</div>
+					<div className="timeago"><small>Posted: {this.props.published}</small></div>
+				</div>
+			</li>
 		);
 	}
 });
