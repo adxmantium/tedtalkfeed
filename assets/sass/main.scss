@@ -4,21 +4,31 @@
 
 $gray: #797979;
 
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-borer-radius: $radius;
+	border-radius: $radius;
+}
+
+body{
+	background: #ddd;
+}
+
 .feed-items-container{
 	ul{
 		padding: 0;
-
-		li{
-			list-style: none;
-			width: 356px;
-			margin-bottom: 10px;
-			box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
-		}
 	}
 }
 
 .feed-item{
-	border: thin solid red;
+	list-style: none;
+	width: 356px;
+	margin-bottom: 15px;
+	box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
+	background-color: #fff;
+	@include border-radius(2px);
+	cursor: pointer;
 
 	.thumb, .content{
 		float: left;
@@ -31,19 +41,45 @@ $gray: #797979;
 	}
 
 	.content{
-		border: thin solid blue;
 		width: 240px;
 
 		.title, .timeago{
 			padding-top: 7px;
 		}
 
-		.title{
+		a:hover{
+			text-decoration: none;
+		}
+
+		a > .title{
 			font-weight: 600;
+			color: #202020
 		}
 
 		.timeago{
 			color: $gray;
 		}
+	}
+}
+
+.full-view{
+	h3{
+		b{
+			color: red;
+		}
+
+		span{
+			color: #fff;
+		}
+	}
+}
+
+@media (min-width: 768px){
+	.full-view{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 50px;
+		border: thin solid black;
 	}
 }
