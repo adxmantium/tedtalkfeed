@@ -5845,7 +5845,7 @@ body {
     width: 240px; }
     .feed-item .content .title, .feed-item .content .timeago {
       padding-top: 7px; }
-    .feed-item .content a:hover {
+    .feed-item .content a:hover, .feed-item .content a:active {
       text-decoration: none; }
     .feed-item .content a > .title {
       font-weight: 600;
@@ -5853,16 +5853,47 @@ body {
     .feed-item .content .timeago {
       color: #797979; }
 
-.full-view h3 b {
+.page-title h1 b {
   color: red; }
 
-.full-view h3 span {
+.page-title h1 span {
   color: #fff; }
 
-@media (min-width: 768px) {
-  .full-view {
-    position: fixed;
+.active-item img {
+  width: 280px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-borer-radius: 2px;
+  border-radius: 2px;
+  box-shadow: 3px 3px 11px 1px rgba(0, 0, 0, 0.6);
+  cursor: pointer; }
+
+.active-item .descrip {
+  padding: 10px 0; }
+
+.active-item .thumbnail-container {
+  position: relative; }
+  .active-item .thumbnail-container .play {
+    position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
+    width: 280px;
+    padding-top: 80px;
+    font-size: 28px;
+    color: #fff;
+    visibility: hidden;
+    cursor: pointer; }
+  .active-item .thumbnail-container:hover .play {
+    visibility: visible; }
+
+@media (min-width: 865px) {
+  .full-view {
+    position: fixed;
+    top: 70px;
+    bottom: 50px;
     right: 50px;
-    border: thin solid black; } }
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-borer-radius: 2px;
+    border-radius: 2px; } }

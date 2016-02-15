@@ -2,12 +2,9 @@
 var Feed_Component = React.createClass({
 	getInitialState: function(){
 		return {
-			feed_items: []
+			feed_items: [],
+			active_item: null
 		};
-	},
-
-	componentWillMount: function(){
-		
 	},
 
 	componentDidMount: function(){
@@ -36,15 +33,20 @@ var Feed_Component = React.createClass({
 	},
 
 	fullView: function(elem){
-		elem.css('border', '3px solid red');
-		var data = elem.data('id');
-		console.log(data)
+		var item_index = parseInt(elem.data('id'));
+		var feed_copy = this.state.feed_items.slice();
+		this.setState({active_item: feed_copy[item_index]});
 	},
 
 	render: function(){
 		var timeago = null, _this = this;
 		return (
 			<div className="container-fluid">
+				<div className="row page-title">
+					<div className="col-sm-12">
+						<h1><b>TED</b><span>Talk</span> <small>Feed</small></h1>
+					</div>
+				</div>
 				<div className="row">
 					<div className="col-sm-6">
 						<div className={'feed-items-container'}>
@@ -61,17 +63,54 @@ var Feed_Component = React.createClass({
 														 key={index}
 														 css={'feed-item clearfix'} /> ;
 									}) :
-									<li></li>
+									null
 								}
 							</ul>
 						</div>
 					</div>
 					<div className="col-sm-6 full-view">
-						<h3 className="text-center"><b>TED</b><span>Talk</span> <small>Feed</small></h3>
 						<div className="view">
-							view here
+							{
+								this.state.active_item ? 
+								<ActiveItem title={this.state.active_item.title}
+											thumbnail={this.state.active_item.mediaGroups[0].contents[0].thumbnails[0].url}
+											videotype={this.state.active_item.mediaGroups[0].contents[0].type}
+											video={this.state.active_item.mediaGroups[0].contents[0].url}
+											link={this.state.active_item.link}
+											posted={this.state.active_item.publishedDate}
+											category={this.state.active_item.categories}
+											descrip={this.state.active_item.content} />
+								: <div>{'Select a talk to view more about it.'}</div>
+							}
 						</div>
 					</div>
+				</div>
+			</div>
+		);
+	}
+});
+
+var ActiveItem = React.createClass({
+	render: function(){
+		var timeago = moment(this.props.posted).fromNow();
+		var descrip = this.props.descrip.length > 300 ? this.props.descrip.substr(0, 300).concat('...') : this.props.descrip;
+		return (
+			<div className="active-item">
+				<h3>{this.props.title}</h3>
+				<div className="thumbnail-container">
+					<a href={this.props.video} target="_blank">
+						<img src={this.props.thumbnail} alt="thumbnail" />
+					</a>
+					<div className="play text-center"><b>Play</b></div>
+				</div>
+				<div className="descrip">
+					{descrip}
+				</div>
+				<div>
+					<small><b>Posted: {timeago}</b></small>
+				</div>
+				<div>
+					<small>Category: {this.props.category}</small>
 				</div>
 			</div>
 		);
@@ -82,7 +121,8 @@ var FeedItem = React.createClass({
 	makeActive: function(e){
 		e.preventDefault();
 		var elem = $(e.currentTarget).closest('.feed-item');
-		console.log(elem);
+		$('.feed-item').css('border', 'none');
+		elem.css('border', '3px solid red');
 		this.props.fullView(elem);
 	},
 

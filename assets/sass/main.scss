@@ -47,7 +47,7 @@ body{
 			padding-top: 7px;
 		}
 
-		a:hover{
+		a:hover, a:active{
 			text-decoration: none;
 		}
 
@@ -62,8 +62,8 @@ body{
 	}
 }
 
-.full-view{
-	h3{
+.page-title{
+	h1{
 		b{
 			color: red;
 		}
@@ -74,12 +74,46 @@ body{
 	}
 }
 
-@media (min-width: 768px){
+.active-item{
+	img{
+		width: 280px;
+		@include border-radius(2px);
+		box-shadow: 3px 3px 11px 1px rgba(0,0,0,0.6);
+		cursor:pointer;
+	}
+
+	.descrip{
+		padding: 10px 0;
+	}
+
+	.thumbnail-container{
+		position: relative;
+
+		.play{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 280px;
+			padding-top: 80px;
+			font-size: 28px;
+			color: #fff;
+			visibility: hidden;
+			cursor: pointer;
+		}
+
+		&:hover .play{
+			visibility: visible;
+		}
+	}
+}
+
+@media (min-width: 865px){
 	.full-view{
 		position: fixed;
-		top: 0;
-		bottom: 0;
+		top: 70px;
+		bottom: 50px;
 		right: 50px;
-		border: thin solid black;
+		@include border-radius(2px);
 	}
 }
