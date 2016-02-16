@@ -5877,8 +5877,7 @@ body {
     -webkit-border-radius: 2px 2px 0 0;
     -moz-border-radius: 2px 2px 0 0;
     -ms-borer-radius: 2px 2px 0 0;
-    border-radius: 2px 2px 0 0;
-    cursor: pointer; }
+    border-radius: 2px 2px 0 0; }
   .active-item .thumbnail-container .h-title {
     position: absolute;
     z-index: 1;
@@ -5889,8 +5888,8 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 0 0 0 10px;
-    font-size: 28px;
+    padding: 0 0 0 15px;
+    font-size: 36px;
     color: #fff;
     visibility: hidden;
     cursor: pointer;
