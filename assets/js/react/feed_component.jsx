@@ -66,6 +66,7 @@ var Feed_Component = React.createClass({
 									null
 								}
 							</ul>
+							<div className="by-me"><small><b>By: Adam Adams</b></small></div>
 						</div>
 					</div>
 					<div className="col-sm-6 full-view">
