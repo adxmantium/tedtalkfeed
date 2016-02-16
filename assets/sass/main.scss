@@ -74,36 +74,77 @@ body{
 	}
 }
 
-.active-item{
-	img{
-		width: 280px;
-		@include border-radius(2px);
-		box-shadow: 3px 3px 11px 1px rgba(0,0,0,0.6);
-		cursor:pointer;
-	}
+.view{
+	box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
+}
 
-	.descrip{
-		padding: 10px 0;
-	}
+.active-item{
 
 	.thumbnail-container{
 		position: relative;
 
+		img{
+			max-width: 100%;
+			@include border-radius(2px 2px 0 0);
+			cursor:pointer;
+		}
+
+		.h-title{
+			position: absolute;
+			z-index: 1;
+			font-size: 24px;
+			padding: 10px 15px;
+			color: #fff;
+		}
+
 		.play{
 			position: absolute;
-			top: 0;
 			bottom: 0;
 			left: 0;
-			width: 280px;
-			padding-top: 80px;
+			padding: 0 0 0 10px;
 			font-size: 28px;
 			color: #fff;
 			visibility: hidden;
 			cursor: pointer;
+			z-index: 1;
+
+			a{
+				color: red;
+			}
 		}
 
 		&:hover .play{
 			visibility: visible;
+		}
+
+
+	}
+
+	.descrip-meta-container{
+		background-color: #fff;
+		padding: 0 10px 10px;
+		@include border-radius(0 0 2px 2px);
+
+		.descrip{
+			padding: 10px 0;
+
+			.tip{
+				color: red;
+				cursor: pointer;
+			}
+		}
+
+		.meta{
+
+		}
+	}
+
+	.meta{
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
 		}
 	}
 }

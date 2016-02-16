@@ -93,24 +93,24 @@ var Feed_Component = React.createClass({displayName: "Feed_Component",
 var ActiveItem = React.createClass({displayName: "ActiveItem",
 	render: function(){
 		var timeago = moment(this.props.posted).fromNow();
-		var descrip = this.props.descrip.length > 300 ? this.props.descrip.substr(0, 300).concat('...') : this.props.descrip;
+		var full_descrip = this.props.descrip;
+		var descrip_w_no_html = full_descrip.split('<')[0];
+		var descrip = this.props.descrip.length > 200 ? this.props.descrip.substr(0, 200).concat('...') : this.props.descrip;
 		return (
 			React.createElement("div", {className: "active-item"}, 
-				React.createElement("h3", null, this.props.title), 
 				React.createElement("div", {className: "thumbnail-container"}, 
-					React.createElement("a", {href: this.props.video, target: "_blank"}, 
-						React.createElement("img", {src: this.props.thumbnail, alt: "thumbnail"})
+					React.createElement("div", {className: "h-title"}, this.props.title), 
+					React.createElement("img", {src: this.props.thumbnail, alt: "thumbnail"}), 
+					React.createElement("div", {className: "play text-center"}, React.createElement("b", null, React.createElement("a", {href: this.props.video, target: "_blank"}, "Play")))
+				), 
+				React.createElement("div", {className: "descrip-meta-container"}, 
+					React.createElement("div", {className: "descrip"}, 
+						descrip, " ", React.createElement("span", {className: "tip", "data-toggle": "tooltip", "data-placement": "top", title: descrip_w_no_html}, "see more")
 					), 
-					React.createElement("div", {className: "play text-center"}, React.createElement("b", null, "Play"))
-				), 
-				React.createElement("div", {className: "descrip"}, 
-					descrip
-				), 
-				React.createElement("div", null, 
-					React.createElement("small", null, React.createElement("b", null, "Posted: ", timeago))
-				), 
-				React.createElement("div", null, 
-					React.createElement("small", null, "Category: ", this.props.category)
+					React.createElement("div", {className: "clearfix meta"}, 
+						React.createElement("div", {className: "left"}, React.createElement("small", null, React.createElement("b", null, "Posted: ", timeago))), 
+						React.createElement("div", {className: "right"}, React.createElement("small", null, "Category: ", this.props.category))
+					)
 				)
 			)
 		);

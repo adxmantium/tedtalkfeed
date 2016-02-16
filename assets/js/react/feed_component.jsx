@@ -93,24 +93,24 @@ var Feed_Component = React.createClass({
 var ActiveItem = React.createClass({
 	render: function(){
 		var timeago = moment(this.props.posted).fromNow();
-		var descrip = this.props.descrip.length > 300 ? this.props.descrip.substr(0, 300).concat('...') : this.props.descrip;
+		var full_descrip = this.props.descrip;
+		var descrip_w_no_html = full_descrip.split('<')[0];
+		var descrip = this.props.descrip.length > 200 ? this.props.descrip.substr(0, 200).concat('...') : this.props.descrip;
 		return (
 			<div className="active-item">
-				<h3>{this.props.title}</h3>
 				<div className="thumbnail-container">
-					<a href={this.props.video} target="_blank">
-						<img src={this.props.thumbnail} alt="thumbnail" />
-					</a>
-					<div className="play text-center"><b>Play</b></div>
+					<div className="h-title">{this.props.title}</div>
+					<img src={this.props.thumbnail} alt="thumbnail" />
+					<div className="play text-center"><b><a href={this.props.video} target="_blank">Play</a></b></div>
 				</div>
-				<div className="descrip">
-					{descrip}
-				</div>
-				<div>
-					<small><b>Posted: {timeago}</b></small>
-				</div>
-				<div>
-					<small>Category: {this.props.category}</small>
+				<div className="descrip-meta-container">
+					<div className="descrip">
+						{descrip} <span className="tip" data-toggle="tooltip" data-placement="top" title={descrip_w_no_html}>see more</span>
+					</div>
+					<div className="clearfix meta">
+						<div className="left"><small><b>Posted: {timeago}</b></small></div>
+						<div className="right"><small>Category: {this.props.category}</small></div>
+					</div>
 				</div>
 			</div>
 		);

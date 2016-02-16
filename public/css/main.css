@@ -5859,33 +5859,57 @@ body {
 .page-title h1 span {
   color: #fff; }
 
-.active-item img {
-  width: 280px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-borer-radius: 2px;
-  border-radius: 2px;
-  box-shadow: 3px 3px 11px 1px rgba(0, 0, 0, 0.6);
-  cursor: pointer; }
-
-.active-item .descrip {
-  padding: 10px 0; }
+.view {
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.6); }
 
 .active-item .thumbnail-container {
   position: relative; }
+  .active-item .thumbnail-container img {
+    max-width: 100%;
+    -webkit-border-radius: 2px 2px 0 0;
+    -moz-border-radius: 2px 2px 0 0;
+    -ms-borer-radius: 2px 2px 0 0;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer; }
+  .active-item .thumbnail-container .h-title {
+    position: absolute;
+    z-index: 1;
+    font-size: 24px;
+    padding: 10px 15px;
+    color: #fff; }
   .active-item .thumbnail-container .play {
     position: absolute;
-    top: 0;
     bottom: 0;
     left: 0;
-    width: 280px;
-    padding-top: 80px;
+    padding: 0 0 0 10px;
     font-size: 28px;
     color: #fff;
     visibility: hidden;
-    cursor: pointer; }
+    cursor: pointer;
+    z-index: 1; }
+    .active-item .thumbnail-container .play a {
+      color: red; }
   .active-item .thumbnail-container:hover .play {
     visibility: visible; }
+
+.active-item .descrip-meta-container {
+  background-color: #fff;
+  padding: 0 10px 10px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  -ms-borer-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px; }
+  .active-item .descrip-meta-container .descrip {
+    padding: 10px 0; }
+    .active-item .descrip-meta-container .descrip .tip {
+      color: red;
+      cursor: pointer; }
+
+.active-item .meta .left {
+  float: left; }
+
+.active-item .meta .right {
+  float: right; }
 
 @media (min-width: 865px) {
   .full-view {
