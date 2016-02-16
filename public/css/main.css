@@ -5865,7 +5865,8 @@ body {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-borer-radius: 2px;
-  border-radius: 2px; }
+  border-radius: 2px;
+  max-width: 480px; }
   .view .default-msg {
     font-size: 20px;
     padding: 10px; }
