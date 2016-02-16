@@ -76,6 +76,13 @@ body{
 
 .view{
 	box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
+	background-color: #fff;
+	@include border-radius(2px);
+
+	.default-msg{
+		font-size: 20px;
+		padding: 10px;
+	}
 }
 
 .active-item{

@@ -80,7 +80,7 @@ var Feed_Component = React.createClass({
 											posted={this.state.active_item.publishedDate}
 											category={this.state.active_item.categories}
 											descrip={this.state.active_item.content} />
-								: <div>{'Select a talk to view more about it.'}</div>
+								: <div className="default-msg">{'Select a talk to view more about it.'}</div>
 							}
 						</div>
 					</div>
