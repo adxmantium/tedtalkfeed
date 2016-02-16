@@ -5919,6 +5919,9 @@ body {
 .active-item .meta .right {
   float: right; }
 
+.by-me {
+  margin-bottom: 50px; }
+
 @media (min-width: 865px) {
   .full-view {
     position: fixed;

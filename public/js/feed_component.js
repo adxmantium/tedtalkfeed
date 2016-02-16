@@ -66,7 +66,7 @@ var Feed_Component = React.createClass({displayName: "Feed_Component",
 									null
 								
 							), 
-							React.createElement("div", null, React.createElement("small", null, React.createElement("b", null, "By: Adam Adams")))
+							React.createElement("div", {className: "by-me"}, React.createElement("small", null, React.createElement("b", null, "By: Adam Adams")))
 						)
 					), 
 					React.createElement("div", {className: "col-sm-6 full-view"}, 
